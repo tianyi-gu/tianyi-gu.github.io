@@ -1,7 +1,8 @@
 import * as THREE from "three";
 import { OrbitControls } from 'https://unpkg.com/three@0.156.1/examples/jsm/controls/OrbitControls.js';
 // import { OrbitControls } from "../node_modules/three/examples/jsm/controls/OrbitControls.js";
-import { GLTFLoader } from 'https://unpkg.com/browse/three@0.156.1/examples/jsm/loaders/GLTFLoader.js';
+// import { GLTFLoader } from '/three/addons/loaders/GLTFLoader.js';
+import { GLTFLoader } from 'https://unpkg.com/three@0.156.1/examples/jsm/loaders/GLTFLoader.js';
 
 
 const scene = new THREE.Scene();
