@@ -1,5 +1,6 @@
 import * as THREE from "three";
-import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import { OrbitControls } from 'https://unpkg.com/three@0.156.1/examples/jsm/controls/OrbitControls.js';
+// import { OrbitControls } from "./node_modules/three/examples/jsm/controls/OrbitControls.js";
 
 // initialize the scene
 const scene = new THREE.Scene();
