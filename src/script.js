@@ -14,7 +14,7 @@ const controls = new OrbitControls(camera, renderer.domElement);
 
 const loader = new GLTFLoader();
 
-loader.load( './models/310-gameroom.glb', function ( gltf ) {
+loader.load( './311-gameroom.glb', function ( gltf ) {
 
 	scene.add( gltf.scene );
 
