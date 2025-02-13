@@ -16,31 +16,37 @@ body {
 }
 
 .course-info {
-    color: #888;
+    color: white;
     font-size: 1.2em;
     margin-bottom: 10px;
+    font-family: 'Special Elite', cursive;
+    letter-spacing: 1px;
 }
 
 #startScreen h1 {
     color: white;
-    font-size: 2.5em;
+    font-size: 3em;
     text-align: center;
     margin-bottom: 30px;
+    font-family: 'Crimson Text', serif;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    letter-spacing: 2px;
 }
 
 #startButton {
     padding: 15px 30px;
     font-size: 1.2em;
-    background-color: #4CAF50;
+    background-color: #8b0000;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    font-family: 'Special Elite', cursive;
 }
 
 #startButton:hover {
-    background-color: #45a049;
+    background-color: #660000;
 }
 
 #instructionsPopup {
