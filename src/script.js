@@ -28,7 +28,7 @@ directionalLight.position.set(1, 1, 1).normalize();
 scene.add(directionalLight);
 
 // Keyboard controls setup
-const moveSpeed = 0.1;
+const moveSpeed = 0.05;
 const keyState = {
 	ArrowUp: false,
 	ArrowDown: false,
@@ -215,8 +215,8 @@ document.getElementById('instructionsPopup').addEventListener('click', (event) =
 // Define clue positions and content
 const clues = {
 	1: {
-		position: new THREE.Vector3(5.65, -1.60, -11.85),
-		lookAt: new THREE.Vector3(5.64, -1.59, -11.85),
+		position: new THREE.Vector3(5.43, -1.70, -11.60),
+		lookAt: new THREE.Vector3(8.14, -2.20, -12.76),
 		title: "Violin and Sheet Music Stand",
 		text: "A well-used violin hints at a mind that finds music in logic. Perhaps playing helps the resident think?"
 	},
