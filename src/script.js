@@ -4,16 +4,15 @@ import { OrbitControls } from 'https://unpkg.com/three@0.156.1/examples/jsm/cont
 // import { GLTFLoader } from '/three/addons/loaders/GLTFLoader.js';
 import { GLTFLoader } from 'https://unpkg.com/three@0.156.1/examples/jsm/loaders/GLTFLoader.js';
 
-// Initialize scene, camera, and renderer but don't start rendering yet
+// Initialize scene, camera, and renderer
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 
-// Don't append renderer to document yet
+// Setup controls and lights
 const controls = new OrbitControls(camera, renderer.domElement);
 
-// Add lights
 const ambientLight = new THREE.AmbientLight(0xffffff, 1);
 scene.add(ambientLight);
 
@@ -72,11 +71,31 @@ function animate() {
 	renderer.render(scene, camera);
 }
 
+// Preload the model
+const loader = new GLTFLoader();
+let modelLoaded = false;
+
+loader.load('./bakerstreet.glb', function (gltf) {
+	scene.add(gltf.scene);
+	modelLoaded = true;
+}, undefined, function (error) {
+	console.error(error);
+});
+
 // Start button click handler
 document.getElementById('startButton').addEventListener('click', () => {
-	// Remove start screen
+	// Hide start screen and show instructions
 	const startScreen = document.getElementById('startScreen');
+	const instructionsPopup = document.getElementById('instructionsPopup');
 	startScreen.style.display = 'none';
+	instructionsPopup.style.display = 'flex';
+});
+
+// Continue button click handler
+document.getElementById('continueButton').addEventListener('click', () => {
+	// Hide instructions and start the game
+	const instructionsPopup = document.getElementById('instructionsPopup');
+	instructionsPopup.style.display = 'none';
 	
 	// Append renderer to document
 	document.body.appendChild(renderer.domElement);
