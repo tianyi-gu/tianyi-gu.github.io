@@ -17,8 +17,8 @@ controls.target.set(0, 2, -5); // Set the pivot point to match where we're looki
 controls.update();
 
 // Initial camera position (far out)
-camera.position.set(20, 20, 20);
-camera.lookAt(0, 2, -5); // Match the lookAt with the pivot point
+camera.position.set(7.34, -0.57, -6.21);
+camera.lookAt(7.34, -0.57, -6.21); // Match the lookAt with the pivot point
 
 const ambientLight = new THREE.AmbientLight(0xffffff, 1);
 scene.add(ambientLight);
@@ -28,7 +28,7 @@ directionalLight.position.set(1, 1, 1).normalize();
 scene.add(directionalLight);
 
 // Keyboard controls setup
-const moveSpeed = 0.05;
+const moveSpeed = 0.03;
 const keyState = {
 	ArrowUp: false,
 	ArrowDown: false,
@@ -239,7 +239,7 @@ const clues = {
 		text: "A mix of scientific texts, detective novels, and case files—this is a mind that thrives on knowledge and deduction."
 	},
 	5: {
-		position: new THREE.Vector3(3.86, -0.25, -9.04),
+		position: new THREE.Vector3(3.34, -0.25, -9.52),
 		lookAt: new THREE.Vector3(-17.50, -14.26, -35.51),
 		title: "Mounted Skull with Glowing Eyes",
 		text: "A dramatic, unsettling choice. Someone with a taste for mystery—perhaps even deception—lives here."
