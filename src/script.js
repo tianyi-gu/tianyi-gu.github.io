@@ -64,23 +64,36 @@ window.addEventListener('keyup', (event) => {
 });
 
 function handleKeyboardInput() {
-	const forward = new THREE.Vector3();
-	camera.getWorldDirection(forward);
-	const right = new THREE.Vector3();
-	right.crossVectors(forward, camera.up).normalize();
+	// Get forward and right vectors from camera
+	const forward = new THREE.Vector3(0, 0, -1);
+	forward.applyQuaternion(camera.quaternion);
+	forward.y = 0; // Keep movement horizontal
+	forward.normalize();
 
+	const right = new THREE.Vector3(1, 0, 0);
+	right.applyQuaternion(camera.quaternion);
+	right.y = 0; // Keep movement horizontal
+	right.normalize();
+
+	// Move camera and target together to maintain orientation
 	if (keyState.ArrowUp) {
 		camera.position.addScaledVector(forward, moveSpeed);
+		controls.target.addScaledVector(forward, moveSpeed);
 	}
 	if (keyState.ArrowDown) {
 		camera.position.addScaledVector(forward, -moveSpeed);
+		controls.target.addScaledVector(forward, -moveSpeed);
 	}
 	if (keyState.ArrowLeft) {
 		camera.position.addScaledVector(right, -moveSpeed);
+		controls.target.addScaledVector(right, -moveSpeed);
 	}
 	if (keyState.ArrowRight) {
 		camera.position.addScaledVector(right, moveSpeed);
+		controls.target.addScaledVector(right, moveSpeed);
 	}
+
+	controls.update();
 }
 
 let animationInProgress = false;
