@@ -192,3 +192,53 @@ body {
     background-color: #660000;
 }
 
+#acknowledgementsButton {
+    position: fixed;
+    top: 20px;
+    right: 100px;
+    padding: 10px 20px;
+    font-size: 1.1em;
+    background-color: #8b0000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-family: 'Special Elite', cursive;
+    z-index: 999;
+}
+
+#acknowledgementsButton:hover {
+    background-color: #660000;
+}
+
+.acknowledgement-text {
+    color: #ddd;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.acknowledgement-text a {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.acknowledgement-text a:hover {
+    color: #ccc;
+}
+
+#closeAcknowledgementsButton {
+    margin-top: 15px;
+    padding: 8px 15px;
+    background-color: #8b0000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Special Elite', cursive;
+}
+
+#closeAcknowledgementsButton:hover {
+    background-color: #660000;
+}
+

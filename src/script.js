@@ -179,8 +179,10 @@ document.getElementById('startButton').addEventListener('click', () => {
 document.getElementById('continueButton').addEventListener('click', () => {
 	const instructionsPopup = document.getElementById('instructionsPopup');
 	const helpButton = document.getElementById('helpButton');
+	const acknowledgementsButton = document.getElementById('acknowledgementsButton');
 	instructionsPopup.style.display = 'none';
 	helpButton.style.display = 'block';
+	acknowledgementsButton.style.display = 'block';
 	
 	document.body.appendChild(renderer.domElement);
 	
@@ -291,4 +293,22 @@ document.querySelectorAll('.clue-button').forEach(button => {
 // Close clue popup handler
 document.getElementById('closeClueButton').addEventListener('click', () => {
 	document.getElementById('cluePopup').style.display = 'none';
+});
+
+// Acknowledgements button click handler
+document.getElementById('acknowledgementsButton').addEventListener('click', () => {
+	const acknowledgementsPopup = document.getElementById('acknowledgementsPopup');
+	acknowledgementsPopup.style.display = 'flex';
+});
+
+// Close acknowledgements button handler
+document.getElementById('closeAcknowledgementsButton').addEventListener('click', () => {
+	document.getElementById('acknowledgementsPopup').style.display = 'none';
+});
+
+// Allow clicking outside popup to close it
+document.getElementById('acknowledgementsPopup').addEventListener('click', (event) => {
+	if (event.target.id === 'acknowledgementsPopup') {
+		event.target.style.display = 'none';
+	}
 });
