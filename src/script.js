@@ -14,15 +14,11 @@ const controls = new OrbitControls(camera, renderer.domElement);
 
 const loader = new GLTFLoader();
 
-loader.load( './311-gameroom.glb', function ( gltf ) {
-
-	scene.add( gltf.scene );
-
-}, undefined, function ( error ) {
-
-	console.error( error );
-
-} );
+loader.load('./bakerstreet.glb', function (gltf) {
+	scene.add(gltf.scene);
+}, undefined, function (error) {
+	console.error(error);
+});
 
 // Add ambient light
 const ambientLight = new THREE.AmbientLight(0xffffff, 1);
@@ -37,9 +33,9 @@ camera.position.set(8, 8, 5);
 controls.update();
 
 function animate() {
-  requestAnimationFrame(animate);
-  controls.update();
-  renderer.render(scene, camera);
+	requestAnimationFrame(animate);
+	controls.update();
+	renderer.render(scene, camera);
 }
 animate();
 
