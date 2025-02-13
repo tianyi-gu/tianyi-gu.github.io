@@ -13,14 +13,12 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 // Setup controls and lights
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true; // Add smooth damping to camera movements
+controls.target.set(0, 2, -5); // Set the pivot point to match where we're looking
+controls.update();
 
 // Initial camera position (far out)
 camera.position.set(20, 20, 20);
-camera.lookAt(0, 0, 0);
-
-// Target camera position (inside room)
-const targetPosition = new THREE.Vector3(0, 2, 0);
-const targetLookAt = new THREE.Vector3(0, 2, -5);
+camera.lookAt(0, 2, -5); // Match the lookAt with the pivot point
 
 const ambientLight = new THREE.AmbientLight(0xffffff, 1);
 scene.add(ambientLight);
@@ -167,4 +165,89 @@ document.getElementById('instructionsPopup').addEventListener('click', (event) =
 	if (event.target.id === 'instructionsPopup') {
 		event.target.style.display = 'none';
 	}
+});
+
+// Define clue positions and content
+const clues = {
+	1: {
+		position: new THREE.Vector3(5, 2, 0),
+		lookAt: new THREE.Vector3(0, 2, 0),
+		title: "First Clue",
+		text: "A mysterious letter lies on the desk..."
+	},
+	2: {
+		position: new THREE.Vector3(-5, 2, 0),
+		lookAt: new THREE.Vector3(0, 2, 0),
+		title: "Second Clue",
+		text: "Blood stains near the window..."
+	},
+	3: {
+		position: new THREE.Vector3(0, 2, 5),
+		lookAt: new THREE.Vector3(0, 2, 0),
+		title: "Third Clue",
+		text: "A broken picture frame..."
+	},
+	4: {
+		position: new THREE.Vector3(0, 2, -5),
+		lookAt: new THREE.Vector3(0, 2, 0),
+		title: "Fourth Clue",
+		text: "Muddy footprints leading to..."
+	},
+	5: {
+		position: new THREE.Vector3(3, 4, 3),
+		lookAt: new THREE.Vector3(0, 2, 0),
+		title: "Final Clue",
+		text: "The murder weapon..."
+	}
+};
+
+// Add clue button click handlers
+document.querySelectorAll('.clue-button').forEach(button => {
+	button.addEventListener('click', () => {
+		const clueNumber = button.getAttribute('data-clue');
+		const clue = clues[clueNumber];
+		
+		// Animate camera to clue position
+		const duration = 1000;
+		const startPosition = camera.position.clone();
+		const startRotation = camera.quaternion.clone();
+		
+		const tempCamera = camera.clone();
+		tempCamera.position.copy(clue.position);
+		tempCamera.lookAt(clue.lookAt);
+		const targetRotation = tempCamera.quaternion;
+		
+		const startTime = Date.now();
+		
+		function animateToClue() {
+			const elapsed = Date.now() - startTime;
+			const progress = Math.min(elapsed / duration, 1);
+			
+			// Smooth interpolation
+			const t = progress * (2 - progress); // Ease out quad
+			
+			camera.position.lerpVectors(startPosition, clue.position, t);
+			camera.quaternion.slerpQuaternions(startRotation, targetRotation, t);
+			
+			controls.target.copy(clue.lookAt);
+			controls.update();
+			
+			if (progress < 1) {
+				requestAnimationFrame(animateToClue);
+			} else {
+				// Show clue popup
+				const cluePopup = document.getElementById('cluePopup');
+				document.getElementById('clueTitle').textContent = clue.title;
+				document.getElementById('clueText').textContent = clue.text;
+				cluePopup.style.display = 'block';
+			}
+		}
+		
+		animateToClue();
+	});
+});
+
+// Close clue popup handler
+document.getElementById('closeClueButton').addEventListener('click', () => {
+	document.getElementById('cluePopup').style.display = 'none';
 });
