@@ -17,8 +17,8 @@ controls.target.set(0, 2, -5); // Set the pivot point to match where we're looki
 controls.update();
 
 // Initial camera position (far out)
-camera.position.set(7.34, -0.57, -6.21);
-camera.lookAt(7.34, -0.57, -6.21); // Match the lookAt with the pivot point
+camera.position.set(10.42, 1.60, -6.23);
+camera.lookAt(4.13, -1.78, -9.53); // Match the lookAt with the pivot point
 
 const ambientLight = new THREE.AmbientLight(0xffffff, 1);
 scene.add(ambientLight);
