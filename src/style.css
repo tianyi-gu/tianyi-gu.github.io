@@ -71,6 +71,10 @@ body {
 .popup-content h2 {
     color: white;
     margin-bottom: 20px;
+    font-family: 'Crimson Text', serif;
+    font-size: 2.2em;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .popup-content ul {
@@ -78,19 +82,23 @@ body {
     text-align: left;
     margin-bottom: 25px;
     line-height: 1.6;
+    font-family: 'Special Elite', cursive;
+    font-size: 1.1em;
 }
 
 #continueButton {
     padding: 15px 30px;
     font-size: 1.2em;
-    background-color: #4CAF50;
+    background-color: #8b0000;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    font-family: 'Special Elite', cursive;
+    letter-spacing: 1px;
 }
 
 #continueButton:hover {
-    background-color: #45a049;
+    background-color: #660000;
 }
