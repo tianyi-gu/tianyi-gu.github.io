@@ -39,8 +39,8 @@ const keyState = {
 };
 
 window.addEventListener('keydown', (event) => {
-	if (keyState.hasOwnProperty(event.key.toLowerCase())) {
-		keyState[event.key.toLowerCase()] = true;
+	if (keyState.hasOwnProperty(event.key)) {
+		keyState[event.key] = true;
 	}
 	if (event.key === 'p' || event.key === 'P') {
 		// Log current camera position and look-at target
@@ -60,8 +60,8 @@ window.addEventListener('keydown', (event) => {
 });
 
 window.addEventListener('keyup', (event) => {
-	if (keyState.hasOwnProperty(event.key.toLowerCase())) {
-		keyState[event.key.toLowerCase()] = false;
+	if (keyState.hasOwnProperty(event.key)) {
+		keyState[event.key] = false;
 	}
 });
 
@@ -221,8 +221,8 @@ const clues = {
 		text: "A well-used violin hints at a mind that finds music in logic. Perhaps playing helps the resident think?"
 	},
 	2: {
-		position: new THREE.Vector3(0.87, 2.00, -8.92),
-		lookAt: new THREE.Vector3(0.87, 2.00, -5.00),
+		position: new THREE.Vector3(3.87, 2.00, -8.92),
+		lookAt: new THREE.Vector3(0.87, 2.00, -8.92),
 		title: "Scientific Papers on the Desk",
 		text: "Scattered notes and case files suggest a sharp analytical mind—someone obsessed with solving mysteries."
 	},
