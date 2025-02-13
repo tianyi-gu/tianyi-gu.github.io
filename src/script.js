@@ -222,7 +222,7 @@ const clues = {
 	},
 	2: {
 		position: new THREE.Vector3(0.87, 2.00, -8.92),
-		lookAt: new THREE.Vector3(0.87, 2.00, -8.92),
+		lookAt: new THREE.Vector3(0.87, 2.00, -5.00),
 		title: "Scientific Papers on the Desk",
 		text: "Scattered notes and case files suggest a sharp analytical mind—someone obsessed with solving mysteries."
 	},
