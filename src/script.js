@@ -215,14 +215,14 @@ document.getElementById('instructionsPopup').addEventListener('click', (event) =
 // Define clue positions and content
 const clues = {
 	1: {
-		position: new THREE.Vector3(-0.01, 2.01, -4.99),
-		lookAt: new THREE.Vector3(0.00, 2.00, -5.00),
+		position: new THREE.Vector3(5.65, -1.60, -11.85),
+		lookAt: new THREE.Vector3(5.64, -1.59, -11.85),
 		title: "Violin and Sheet Music Stand",
 		text: "A well-used violin hints at a mind that finds music in logic. Perhaps playing helps the resident think?"
 	},
 	2: {
-		position: new THREE.Vector3(3.87, 2.00, -8.92),
-		lookAt: new THREE.Vector3(0.87, 2.00, -8.92),
+		position: new THREE.Vector3(4.90, -1.76, -9.89),
+		lookAt: new THREE.Vector3(7.49, -3.20, -10.31),
 		title: "Scientific Papers on the Desk",
 		text: "Scattered notes and case files suggest a sharp analytical mind—someone obsessed with solving mysteries."
 	},
@@ -239,7 +239,7 @@ const clues = {
 		text: "A mix of scientific texts, detective novels, and case files—this is a mind that thrives on knowledge and deduction."
 	},
 	5: {
-		position: new THREE.Vector3(5.34, -0.25, -10.39),
+		position: new THREE.Vector3(3.86, -0.25, -9.04),
 		lookAt: new THREE.Vector3(-17.50, -14.26, -35.51),
 		title: "Mounted Skull with Glowing Eyes",
 		text: "A dramatic, unsettling choice. Someone with a taste for mystery—perhaps even deception—lives here."
