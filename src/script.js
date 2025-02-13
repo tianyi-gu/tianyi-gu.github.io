@@ -138,25 +138,33 @@ document.getElementById('startButton').addEventListener('click', () => {
 
 // Continue button click handler
 document.getElementById('continueButton').addEventListener('click', () => {
-	// Hide instructions and start the game
 	const instructionsPopup = document.getElementById('instructionsPopup');
+	const helpButton = document.getElementById('helpButton');
 	instructionsPopup.style.display = 'none';
+	helpButton.style.display = 'block';
 	
-	// Append renderer to document
 	document.body.appendChild(renderer.domElement);
 	
-	// Load the model
 	const loader = new GLTFLoader();
 	loader.load('./bakerstreet.glb', function (gltf) {
 		scene.add(gltf.scene);
-		
-		// Start camera animation after model is loaded
 		animationInProgress = true;
 		animationStartTime = 0;
-		
-		// Start animation loop
 		animate();
 	}, undefined, function (error) {
 		console.error(error);
 	});
+});
+
+// Help button click handler
+document.getElementById('helpButton').addEventListener('click', () => {
+	const instructionsPopup = document.getElementById('instructionsPopup');
+	instructionsPopup.style.display = 'flex';
+});
+
+// Allow clicking outside popup to close it
+document.getElementById('instructionsPopup').addEventListener('click', (event) => {
+	if (event.target.id === 'instructionsPopup') {
+		event.target.style.display = 'none';
+	}
 });
