@@ -125,10 +125,10 @@ function animateCamera(timestamp) {
 	}
 }
 
-function animate(timestamp) {
+function animate() {
 	requestAnimationFrame(animate);
 	if (animationInProgress) {
-		animateCamera(timestamp);
+		animateCamera(Date.now());
 	} else {
 		handleKeyboardInput();
 	}
@@ -170,17 +170,26 @@ document.getElementById('continueButton').addEventListener('click', () => {
 	instructionsPopup.style.display = 'none';
 	helpButton.style.display = 'block';
 	
+	// Append renderer to document
 	document.body.appendChild(renderer.domElement);
 	
+	// Load the model
 	const loader = new GLTFLoader();
-	loader.load('./bakerstreet.glb', function (gltf) {
-		scene.add(gltf.scene);
-		animationInProgress = true;
-		animationStartTime = 0;
-		animate();
-	}, undefined, function (error) {
-		console.error(error);
-	});
+	loader.load('./bakerstreet.glb', 
+		function (gltf) {
+			scene.add(gltf.scene);
+			console.log('Model loaded successfully');
+			animationInProgress = true;
+			animationStartTime = 0;
+			animate();
+		}, 
+		function (xhr) {
+			console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+		},
+		function (error) {
+			console.error('An error occurred loading the model:', error);
+		}
+	);
 });
 
 // Help button click handler
