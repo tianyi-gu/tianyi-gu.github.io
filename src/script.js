@@ -7,9 +7,8 @@ import { GLTFLoader } from 'https://unpkg.com/three@0.156.1/examples/jsm/loaders
 // Initialize scene, camera, and renderer
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer({ antialias: true });
+const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.setPixelRatio(window.devicePixelRatio);
 
 // Setup controls and lights
 const controls = new OrbitControls(camera, renderer.domElement);
@@ -125,10 +124,10 @@ function animateCamera(timestamp) {
 	}
 }
 
-function animate() {
+function animate(timestamp) {
 	requestAnimationFrame(animate);
 	if (animationInProgress) {
-		animateCamera(Date.now());
+		animateCamera(timestamp);
 	} else {
 		handleKeyboardInput();
 	}
@@ -170,26 +169,17 @@ document.getElementById('continueButton').addEventListener('click', () => {
 	instructionsPopup.style.display = 'none';
 	helpButton.style.display = 'block';
 	
-	// Append renderer to document
 	document.body.appendChild(renderer.domElement);
 	
-	// Load the model
 	const loader = new GLTFLoader();
-	loader.load('./bakerstreet.glb', 
-		function (gltf) {
-			scene.add(gltf.scene);
-			console.log('Model loaded successfully');
-			animationInProgress = true;
-			animationStartTime = 0;
-			animate();
-		}, 
-		function (xhr) {
-			console.log((xhr.loaded / xhr.total * 100) + '% loaded');
-		},
-		function (error) {
-			console.error('An error occurred loading the model:', error);
-		}
-	);
+	loader.load('./bakerstreet.glb', function (gltf) {
+		scene.add(gltf.scene);
+		animationInProgress = true;
+		animationStartTime = 0;
+		animate();
+	}, undefined, function (error) {
+		console.error(error);
+	});
 });
 
 // Help button click handler
@@ -289,13 +279,3 @@ document.querySelectorAll('.clue-button').forEach(button => {
 document.getElementById('closeClueButton').addEventListener('click', () => {
 	document.getElementById('cluePopup').style.display = 'none';
 });
-
-// Add window resize handler
-window.addEventListener('resize', () => {
-	// Update camera
-	camera.aspect = window.innerWidth / window.innerHeight;
-	camera.updateProjectionMatrix();
-	
-	// Update renderer
-	renderer.setSize(window.innerWidth, window.innerHeight);
-}, false);
