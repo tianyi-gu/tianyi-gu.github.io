@@ -227,20 +227,20 @@ const clues = {
 		text: "Scattered notes and case files suggest a sharp analytical mind—someone obsessed with solving mysteries."
 	},
 	3: {
-		position: new THREE.Vector3(3.78, 2.00, -10.28),
-		lookAt: new THREE.Vector3(3.78, 2.00, -10.28),
+		position: new THREE.Vector3(0.86, -0.74, -8.63),
+		lookAt: new THREE.Vector3(-20.02, -14.26, -35.65),
 		title: "Skull on the Mantle",
 		text: "A strange decoration—scientific curiosity or a fascination with the macabre? Either way, an unusual resident."
 	},
 	4: {
-		position: new THREE.Vector3(2.62, 2.00, -9.64),
-		lookAt: new THREE.Vector3(2.62, 2.00, -9.64),
+		position: new THREE.Vector3(2.06, -0.53, -9.69),
+		lookAt: new THREE.Vector3(-20.78, -14.26, -34.96),
 		title: "Bookshelf Filled with Old Books and Case Files",
 		text: "A mix of scientific texts, detective novels, and case files—this is a mind that thrives on knowledge and deduction."
 	},
 	5: {
-		position: new THREE.Vector3(4.09, 2.00, -9.03),
-		lookAt: new THREE.Vector3(4.09, 2.00, -9.03),
+		position: new THREE.Vector3(5.34, -0.25, -10.39),
+		lookAt: new THREE.Vector3(-17.50, -14.26, -35.51),
 		title: "Mounted Skull with Glowing Eyes",
 		text: "A dramatic, unsettling choice. Someone with a taste for mystery—perhaps even deception—lives here."
 	}
