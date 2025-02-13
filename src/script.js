@@ -33,12 +33,14 @@ const keyState = {
 	ArrowUp: false,
 	ArrowDown: false,
 	ArrowLeft: false,
-	ArrowRight: false
+	ArrowRight: false,
+	z: false,
+	c: false
 };
 
 window.addEventListener('keydown', (event) => {
-	if (keyState.hasOwnProperty(event.key)) {
-		keyState[event.key] = true;
+	if (keyState.hasOwnProperty(event.key.toLowerCase())) {
+		keyState[event.key.toLowerCase()] = true;
 	}
 	if (event.key === 'p' || event.key === 'P') {
 		// Log current camera position and look-at target
@@ -58,8 +60,8 @@ window.addEventListener('keydown', (event) => {
 });
 
 window.addEventListener('keyup', (event) => {
-	if (keyState.hasOwnProperty(event.key)) {
-		keyState[event.key] = false;
+	if (keyState.hasOwnProperty(event.key.toLowerCase())) {
+		keyState[event.key.toLowerCase()] = false;
 	}
 });
 
@@ -74,6 +76,8 @@ function handleKeyboardInput() {
 	right.applyQuaternion(camera.quaternion);
 	right.y = 0; // Keep movement horizontal
 	right.normalize();
+
+	const up = new THREE.Vector3(0, 1, 0); // Vertical movement vector
 
 	// Move camera and target together to maintain orientation
 	if (keyState.ArrowUp) {
@@ -91,6 +95,15 @@ function handleKeyboardInput() {
 	if (keyState.ArrowRight) {
 		camera.position.addScaledVector(right, moveSpeed);
 		controls.target.addScaledVector(right, moveSpeed);
+	}
+	// Add vertical movement
+	if (keyState.z) {
+		camera.position.addScaledVector(up, moveSpeed);
+		controls.target.addScaledVector(up, moveSpeed);
+	}
+	if (keyState.c) {
+		camera.position.addScaledVector(up, -moveSpeed);
+		controls.target.addScaledVector(up, -moveSpeed);
 	}
 
 	controls.update();
