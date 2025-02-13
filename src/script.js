@@ -180,9 +180,11 @@ document.getElementById('continueButton').addEventListener('click', () => {
 	const instructionsPopup = document.getElementById('instructionsPopup');
 	const helpButton = document.getElementById('helpButton');
 	const acknowledgementsButton = document.getElementById('acknowledgementsButton');
+	const answerButton = document.getElementById('answerButton');
 	instructionsPopup.style.display = 'none';
 	helpButton.style.display = 'block';
 	acknowledgementsButton.style.display = 'block';
+	answerButton.style.display = 'block';
 	
 	document.body.appendChild(renderer.domElement);
 	
@@ -309,6 +311,24 @@ document.getElementById('closeAcknowledgementsButton').addEventListener('click',
 // Allow clicking outside popup to close it
 document.getElementById('acknowledgementsPopup').addEventListener('click', (event) => {
 	if (event.target.id === 'acknowledgementsPopup') {
+		event.target.style.display = 'none';
+	}
+});
+
+// Answer button click handler
+document.getElementById('answerButton').addEventListener('click', () => {
+	const answerPopup = document.getElementById('answerPopup');
+	answerPopup.style.display = 'flex';
+});
+
+// Close answer button handler
+document.getElementById('closeAnswerButton').addEventListener('click', () => {
+	document.getElementById('answerPopup').style.display = 'none';
+});
+
+// Allow clicking outside popup to close it
+document.getElementById('answerPopup').addEventListener('click', (event) => {
+	if (event.target.id === 'answerPopup') {
 		event.target.style.display = 'none';
 	}
 });
