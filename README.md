@@ -1,3 +1,3 @@
-## Personal Website
+## Fun Project
 
-an **unfinished** experiment with three.js
+Currently a fun project for my English class on mystery using Three.js
