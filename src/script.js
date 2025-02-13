@@ -40,6 +40,21 @@ window.addEventListener('keydown', (event) => {
 	if (keyState.hasOwnProperty(event.key)) {
 		keyState[event.key] = true;
 	}
+	if (event.key === 'p' || event.key === 'P') {
+		// Log current camera position and look-at target
+		console.log('Camera Position:', {
+			position: {
+				x: camera.position.x.toFixed(2),
+				y: camera.position.y.toFixed(2),
+				z: camera.position.z.toFixed(2)
+			},
+			lookingAt: {
+				x: controls.target.x.toFixed(2),
+				y: controls.target.y.toFixed(2),
+				z: controls.target.z.toFixed(2)
+			}
+		});
+	}
 });
 
 window.addEventListener('keyup', (event) => {
